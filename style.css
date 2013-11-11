@@ -1,0 +1,43 @@
+
+body {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+h1 {
+  color: rgb(100, 0, 0);
+}
+
+.repo {
+  margin: 10px 10px 10px 10px;
+  padding: 30px 30px 30px 30px;
+  width: 960px;
+  border: thin groove;
+  border-radius: 10px 10px 10px 10px;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: monospace;
+  color: rgb(40, 40, 40);
+}
+
+.des {
+  margin-top: 10px;
+  font-size: 20px;
+  color: rgb(50, 50, 50);
+}
+
+.number {
+  margin-top: 10px;
+  font-style: italic;
+  color: rgb(100, 100, 100);
+}
+
+.avatar {
+  float: right;
+  height: 50px;
+  width: 50px;
+}

@@ -1,0 +1,20 @@
+doctype 5
+
+html
+  head
+    title Erlang Modules
+    link(rel="stylesheet", href="style.css", type="text/css")
+
+  body
+    h1 Erlang Modules
+    each repo, rank in repos
+      .repo
+        if repo.info
+          .rank ##{rank + 1}
+          .name(href=repo.info.html_url) #{repo.name}
+          .des= repo.info.description
+          .number #{repo.depon.length} projects depend on it
+          img.avatar(src=repo.info.owner.avatar_url)
+        else
+          .name ##{rank} #{repo.name}
+          .number #{repo.depon.length} projects depend on it
