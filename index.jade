@@ -6,7 +6,7 @@ html
     link(rel="stylesheet", href="style.css", type="text/css")
 
   body
-    h1 Erlang Modules
+    h1 ERLANG MODULES
     each repo, rank in repos
       .repo
         if repo.info
@@ -14,7 +14,7 @@ html
           .name(href=repo.info.html_url) #{repo.name}
           .des= repo.info.description
           .number #{repo.depon.length} projects depend on it
-          img.avatar(src=repo.info.owner.avatar_url)
+          // img.avatar(src=repo.info.owner.avatar_url)
         else
           .name ##{rank} #{repo.name}
           .number #{repo.depon.length} projects depend on it
