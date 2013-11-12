@@ -60,6 +60,12 @@ h1 {
   text-align: center;
 }
 
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  color: rgb(80, 80, 80)
+}
+
 a{
   color: rgb(100, 0, 0);
   text-decoration: none;

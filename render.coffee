@@ -25,6 +25,7 @@ exports.render = ->
         end_page = (i+1) + 7
 
       jade.renderFile './index.jade', {
+          update: new Date().toUTCString(),
           repos: repos[start...end],
           pages: [start_page...end_page + 1],
           cur_page: (i+1),
