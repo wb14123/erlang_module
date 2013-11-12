@@ -9,12 +9,21 @@ html
     h1 ERLANG MODULES
     each repo, rank in repos
       .repo
+        .rank ##{per_page * (cur_page - 1) + (rank + 1)}
         if repo.info
-          .rank ##{rank + 1}
           .name(href=repo.info.html_url) #{repo.name}
           .des= repo.info.description
-          .number #{repo.depon.length} projects depend on it
           // img.avatar(src=repo.info.owner.avatar_url)
         else
-          .name ##{rank} #{repo.name}
-          .number #{repo.depon.length} projects depend on it
+          .name #{repo.name}
+        .number #{repo.depon.length} projects depend on it
+
+    .pagination
+      ul
+        li PAGES:
+        for p in pages
+          if cur_page === p
+            li= p
+          else
+            li
+              a(href="#{p}.html")= p

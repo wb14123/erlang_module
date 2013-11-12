@@ -46,6 +46,28 @@ h1 {
   color: rgb(100, 100, 100);
 }
 
+.pagination ul li {
+  display: inline;
+  list-style: none;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 30px;
+  font-family: monospace;
+  color: rgb(100, 100, 100);
+}
+
+.pagination {
+  text-align: center;
+}
+
+a{
+  color: rgb(100, 0, 0);
+  text-decoration: none;
+}
+a:hover{
+  color: rgb(100, 100, 100);
+}
+
 // .avatar {
 //   visibility: hidden;
 //   float: right;
