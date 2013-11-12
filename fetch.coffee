@@ -38,7 +38,6 @@ parse_repo = (repo, cb) ->
 
 get_timeout = (reset) ->
   timeout =  new Date(reset * 1000) - new Date()
-  console.log timeout
   return 0 if timeout < 0
   return timeout
 
