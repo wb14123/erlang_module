@@ -11,7 +11,7 @@ html
       .repo
         .rank ##{per_page * (cur_page - 1) + (rank + 1)}
         if repo.info
-          .name(href=repo.info.html_url) #{repo.name}
+          a.name(href=repo.info.html_url, target="_blank") #{repo.name}
           .des= repo.info.description
           // img.avatar(src=repo.info.owner.avatar_url)
         else
