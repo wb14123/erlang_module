@@ -20,6 +20,6 @@ start_render_timer = ->
   setTimeout render, process.env.TIMER || 24 * 3600 * 1000
 
 http.createServer(app).listen app.get('port'), ()->
-  render()
+  setTimeout render, 1000
   start_render_timer()
   console.log "Express server listening on port #{app.get('port')}"
