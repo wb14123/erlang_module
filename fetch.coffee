@@ -12,8 +12,10 @@ request_timeout = 600000
 parse_deps = (data) ->
   regex = /(git|https):\/\/(www\.|)github\.com\/(.*)\.git/g
   result = []
-  while (res = regex.exec(data)?[3])
-    result.push res
+  for line in data.split('\n')
+    line = line.split('%')[0]
+    while (res = regex.exec(line)?[3])
+      result.push res
   return result
 
 parse_repo = (repo, cb) ->
