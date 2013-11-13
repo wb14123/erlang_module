@@ -26,7 +26,10 @@ html
             li= p
           else
             li
-              a(href="#{p}.html")= p
+              if p === 1
+                a(href="/")= p
+              else
+                a(href="#{p}.html")= p
 
     .footer
       Last updated at #{update}

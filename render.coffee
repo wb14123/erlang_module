@@ -32,5 +32,5 @@ exports.render = ->
           per_page: per_page},
         (err, html) ->
           return console.log err if err
-          fs.writeFileSync('_site/index.html', html) if i == 0
+          return fs.writeFileSync('_site/index.html', html) if i == 0
           fs.writeFileSync("_site/#{i+1}.html", html)
