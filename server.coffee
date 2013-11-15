@@ -4,7 +4,7 @@ http = require('http')
 path = require('path')
 render = require('./render').render
 
-host = 'erlang-modules.binwang.me'
+host = process.env.ERLANG_MODULES_HOST || 'erlang-modules.binwang.me'
 
 app = express()
 
