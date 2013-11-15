@@ -4,12 +4,19 @@ http = require('http')
 path = require('path')
 render = require('./render').render
 
+host = 'erlang-modules.binwang.me'
+
 app = express()
 
 # all environments
 app.set('port', process.env.PORT || 3001)
 app.use(express.favicon())
 app.use(express.logger('dev'))
+
+app.use (req, res, next) ->
+  return next() if req.headers.host == host
+  res.redirect("http://#{host}")
+
 app.use(express.static(path.join(__dirname, '_site')))
 
 # development only
