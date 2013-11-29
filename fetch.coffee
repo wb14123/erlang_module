@@ -4,6 +4,7 @@ async = require 'async'
 
 client_id = process.env.GITHUB_CLIENT_ID
 client_secret = process.env.GITHUB_CLIENT_SECRET
+header = {'User-Agent': 'Erlang-Modules'}
 
 repo_depon = {}   # map from full_name to which repos depends on it
 repos = {}        # map from full_name to repo info
@@ -21,7 +22,7 @@ parse_deps = (data) ->
 parse_repo = (repo, cb) ->
   repos[repo.full_name] = repo
   dep_url = "https://raw.github.com/#{repo.full_name}/#{repo.default_branch}/rebar.config"
-  request {url: dep_url, json: false, timeout: request_timeout}, (e, r, data) ->
+  request {url: dep_url, json: false, headers: header, timeout: request_timeout}, (e, r, data) ->
     if r?.statusCode == 404
       console.log "Parsed repo #{repo.full_name}, no rebar.config found."
       return cb()
@@ -45,7 +46,7 @@ get_timeout = (reset) ->
 
 fetch_page = (page, cb) ->
     repo_url = "https://api.github.com/search/repositories?q=language:erlang&sort=stars&per_page=100&page=#{page}&client_id=#{client_id}&client_secret=#{client_secret}"
-    request {url: repo_url, json: true, timeout: request_timeout}, (e, r, data) ->
+    request {url: repo_url, json: true, headers: header, timeout: request_timeout}, (e, r, data) ->
 
       if r?.headers['x-ratelimit-remaining'] == '0' and data?.message?.match('API rate limit exceeded')
         timeout = get_timeout Number(r.headers['x-ratelimit-reset'])
@@ -64,7 +65,7 @@ fetch_page = (page, cb) ->
 fetch_repos = (full_name, cb) ->
     return cb() if repos[full_name]
     repo_url = "https://api.github.com/repos/#{full_name}?client_id=#{client_id}&client_secret=#{client_secret}"
-    request {url: repo_url, json:true, timeout: request_timeout}, (e, r, repo) ->
+    request {url: repo_url, json:true, headers: header, timeout: request_timeout}, (e, r, repo) ->
 
       if r?.headers['x-ratelimit-remaining'] == '0' and repo?.message?.match('API rate limit exceeded')
         timeout = get_timeout Number(r.headers['x-ratelimit-reset'])
