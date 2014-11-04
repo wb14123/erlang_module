@@ -1,3 +1,4 @@
+require 'coffee-script/register'
 
 jade = require 'jade'
 fetch = require('./fetch').fetch
